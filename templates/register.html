@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="{% static "assets/bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="{% static "assets/fonts/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/fonts/ionicons.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/fonts/simple-line-icons.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static "assets/css/Login-Form-Clean.css" %}">
+</head>
+
+<body>
+    <div class="login-clean">
+        <form method="post">
+            {% csrf_token %}
+            <h2 class="sr-only">Register Form</h2>
+            <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password1" placeholder="Password"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password2" placeholder="Re-enter Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Register</button></div>
+            <!-- <a class="forgot" href="#">Forgot your email or password?</a></form> -->
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>
