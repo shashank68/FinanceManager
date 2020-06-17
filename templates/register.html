@@ -27,6 +27,12 @@
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Register</button></div>
             <!-- <a class="forgot" href="#">Forgot your email or password?</a></form> -->
     </div>
+
+    <div>
+        {% for msg in messages %}
+        <h3> {{message}}</h3>
+        {% endfor %}
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
