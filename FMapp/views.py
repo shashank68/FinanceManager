@@ -25,6 +25,9 @@ def login(request):
             messages.info(request, 'No user')
             return redirect('/login')
 
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
 def register(request):
     if request.method == 'GET':
