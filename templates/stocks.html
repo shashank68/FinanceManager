@@ -42,10 +42,10 @@
       <a href="/logout" class="navbar-brand">Logout</a>
     </div>
   </nav>
-  <div class="newStockbutton" style="display:flex; justify-content: space-around; margin: 20px">
+  <!-- <div class="newStockbutton" style="display:flex; justify-content: space-around; margin: 20px">
     <a href="newstock" class="mx-auto btn btn-primary btn-lg active" role="button" aria-pressed="true">New Stock entry</a>
-  </div>
-
+  </div> -->
+  <div style="font-size: 3em;"><center>Stocks</center></div>
   <table class="table table-hover table-dark">
     <thead>
       <tr>
@@ -63,9 +63,13 @@
         <td>{{stock.Company_Symbol}}</td>
         <td>{{stock.Purchase_Cost}}</td>
       </tr>
-      {% empty %}
-        <tr><td>No Stocks</td></tr>
       {% endfor %}
+      <tr>
+        <th colspan="4">    <div class="newStockbutton" style="display:flex; justify-content: space-around;">
+          <a href="newstock" class="mx-auto btn btn-primary btn-lg active" role="button" aria-pressed="true">New Stock entry</a>
+        </div>
+        </td>
+      </tr>
     </tbody>
   </table>
   <!-- Optional JavaScript -->
