@@ -58,10 +58,10 @@
     <tbody>
       {% for stock in user.stocks.all %} 
       <tr>
-        <th scope="row">{{forloop.counter}}</th>
-        <td>{{stock.Company_Name}}</td>
-        <td>{{stock.Company_Symbol}}</td>
-        <td>{{stock.Purchase_Cost}}</td>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{stock.Company_Name}}</td>
+          <td><a href="{% url 'showstock' stock.Company_Symbol %}">{{stock.Company_Symbol}}</td>
+          <td>{{stock.Purchase_Cost}}</td>
       </tr>
       {% endfor %}        
     </tbody>

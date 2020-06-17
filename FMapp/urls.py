@@ -12,5 +12,6 @@ urlpatterns = [
     path('newsaving', views.newsaving, name='newsaving'),
     path('loans', views.loans, name='loans'),
     path('newloan', views.newloan, name='newloan'),
+    path('showstock/<slug:company_symbol>', views.showstock, name='showstock'),
     # path('grph', views.grph, name='graph')
 ]

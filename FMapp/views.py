@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-# from plotly.offline import plot
-# from plotly.graph_objs import Scatter
+from plotly.offline import plot
+from plotly.graph_objs import Scatter
 from .models import Stocks, Savings
 from django.contrib.auth.decorators import login_required
+from alpha_vantage.timeseries import TimeSeries
 
 # Create your views here.
 
@@ -61,6 +62,13 @@ def register(request):
 #     plot_div = plot([Scatter(x=x_data, y=y_data, mode='lines', name='test', opacity=0.8, marker_color='green')], output_type='div', include_plotlyjs=False, show_link=False, link_text="")
 #     return render(request, 'grph.html', context={'plot_div': plot_div})
 
+
+@login_required(login_url='/login')
+def showstock(request, company_symbol):
+    
+    ts = TimeSeries(key='YOUR_API_KEY', output_format='pandas')
+    data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', outputsize='full')
+    return render(request, 'showstock.html', {'sPrice': sPrice})
 
 @login_required(login_url='/login')
 def stocks(request):
