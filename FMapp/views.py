@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from plotly.offline import plot
-from plotly.graph_objs import Scatter
+# from plotly.offline import plot
+# from plotly.graph_objs import Scatter
 from .models import Stocks
 from django.contrib.auth.decorators import login_required
 
@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    return render(request, 'index.html', {'name': 'Sha68'})
+    return render(request, 'index.html')
 
 
 def login(request):
