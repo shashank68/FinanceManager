@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from plotly.offline import plot
-from plotly.graph_objs import Scatter
+# from plotly.offline import plot
+# from plotly.graph_objs import Scatter
 from .models import Stocks, Savings
 from django.contrib.auth.decorators import login_required
-from alpha_vantage.timeseries import TimeSeries
+import yfinance as yf
+import plotly.express as px
+from plotly.offline import plot
 
 # Create your views here.
 
@@ -66,9 +68,19 @@ def register(request):
 @login_required(login_url='/login')
 def showstock(request, company_symbol):
     
-    ts = TimeSeries(key='YOUR_API_KEY', output_format='pandas')
-    data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', outputsize='full')
-    return render(request, 'showstock.html', {'sPrice': sPrice})
+    share_data = yf.Ticker(company_symbol).history(period="1mo")
+    figures = px.line(x=share_data.index, y=share_data.Close, labels={'x':'Date', 'y':'Closing Price'})
+    figures.update_layout(
+        height=850,
+    )
+    figures.update_yaxes(automargin=True)
+    figures.update_xaxes(automargin=True)
+    output_div = plot(figures, output_type='div', show_link= False, link_text="", include_plotlyjs=False)
+    print(output_div)
+    return render(request, "showstock.html", {'plot_div': output_div, 'comp_sym': company_symbol})
+
+
+
 
 @login_required(login_url='/login')
 def stocks(request):
