@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 # from plotly.offline import plot
 # from plotly.graph_objs import Scatter
-from .models import Stocks
+from .models import Stocks, Savings
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -83,4 +83,36 @@ def newStockEntry(request):
         return render(request, 'stocks.html')
 
 
+@login_required(login_url='/login')
+def savings(request):
+    return render(request, 'savings.html')
 
+@login_required(login_url='/login')
+def newsaving(request):
+    if request.method == 'GET':
+        return render(request, 'newSavingEntry.html')
+    else:
+        bank_name = request.POST['bank_name']
+        account_num = request.POST['account_num']
+        balance = request.POST['balance']
+
+        request.user.savings.create(Bank_Name=bank_name, Account_Number = account_num, Balance = balance, Status = True)
+        return render(request, 'savings.html')
+
+
+
+@login_required(login_url='/login')
+def loans(request):
+    return render(request, 'loans.html')
+
+@login_required(login_url='/login')
+def newloan(request):
+    if request.method == 'GET':
+        return render(request, 'newLoanEntry.html')
+    else:
+        bank_name = request.POST['bank_name']
+        account_num = request.POST['account_num']
+        balance = request.POST['balance']
+
+        request.user.loans.create(Bank_Name=bank_name, Account_Number = account_num, Balance = balance, Status = True)
+        return render(request, 'loans.html')

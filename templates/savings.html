@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Stocks</title>
+    <title>Savings</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,18 +26,46 @@
             <a class="nav-link" href="/savings">Savings <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/loan">Loan <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/loans">Loan <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/expenditure">Expenditure <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/expenditures">Expenditure <span class="sr-only">(current)</span></a>
           </li>
   
         </ul>
       </div>
       <div class="nav navbar-nav navbar-right">
-        <a href="/logout" class="navbar-brand"><strong>Logout</strong></a>
+        <a href="#" class="navbar">{{user.email}}</a>
+        <a href="/logout" class="navbar-brand">Logout</a>
       </div>
     </nav>
+
+
+    <div style="font-size: 3em;"><center>Stocks</center></div>
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Bank Name</th>
+        <th scope="col">A/c No.</th>
+        <th scope="col">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for saving in user.savings.all %} 
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{saving.Bank_Name}}</td>
+        <td>{{saving.Account_Number}}</td>
+        <td>{{saving.Balance}}</td>
+      </tr>
+      {% endfor %}        
+    </tbody>
+  </table>
+  <div class="newStockbutton" style="display:flex; justify-content: space-around;">
+    <a href="/newsaving" class="mx-auto btn btn-primary btn-lg active" role="button" aria-pressed="true">New Savings entry</a>
+  </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

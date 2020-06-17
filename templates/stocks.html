@@ -29,10 +29,10 @@
           <a class="nav-link" href="/savings">Savings <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/loan">Loan <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/loans">Loan <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/expenditure">Expenditure <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/expenditures">Expenditure <span class="sr-only">(current)</span></a>
         </li>
 
       </ul>
@@ -50,9 +50,9 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Company Symbol</th>
-        <th scope="col">Cost</th>
+        <th scope="col">Bank Name</th>
+        <th scope="col">A/c No.</th>
+        <th scope="col">Balance</th>
       </tr>
     </thead>
     <tbody>
@@ -63,15 +63,12 @@
         <td>{{stock.Company_Symbol}}</td>
         <td>{{stock.Purchase_Cost}}</td>
       </tr>
-      {% endfor %}
-      <tr>
-        <th colspan="4">    <div class="newStockbutton" style="display:flex; justify-content: space-around;">
-          <a href="newstock" class="mx-auto btn btn-primary btn-lg active" role="button" aria-pressed="true">New Stock entry</a>
-        </div>
-        </td>
-      </tr>
+      {% endfor %}        
     </tbody>
   </table>
+  <div class="newStockbutton" style="display:flex; justify-content: space-around;">
+    <a href="/newstock" class="mx-auto btn btn-primary btn-lg active" role="button" aria-pressed="true">New Stock entry</a>
+  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

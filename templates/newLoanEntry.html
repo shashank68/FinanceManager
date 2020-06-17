@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Stocks</title>
+    <title>Loans</title>
 </head>
 
 <body>
@@ -43,35 +43,27 @@
       </nav>
 
     <div style="margin: 50px;">
-        <form method="POST" action="/newstock">
+        <form method="POST" action="/newloan">
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4">Company Name</label>
-                    <input type="text" class="form-control" id="inputEmail4" name="company_name">
+                    <label for="inputEmail4">Bank Name</label>
+                    <input type="text" class="form-control" id="inputEmail4" name="bank_name">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputPassword4">Comapany Symbol</label>
-                    <input type="text" class="form-control" id="inputPassword4" name="company_symbol">
+                    <label for="inputPassword4">Account Number</label>
+                    <input type="text" class="form-control" id="inputPassword4" name="account_num">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputCity">Purchase Date</label>
-                    <input type="date" class="form-control" id="inputCity" name="purchase_date">
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="inputZip">Purchase Cost</label>
-                    <input type="number" class="form-control" id="inputZip" name="purchase_cost">
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="inputZip">Quantity</label>
-                    <input type="number" class="form-control" id="inputZip" name="quantity">
+                    <label for="inputCity">Current Balance</label>
+                    <input type="number" class="form-control" id="inputCity" name="balance">
                 </div>
             </div>
+
+                
 
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
