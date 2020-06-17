@@ -4,6 +4,8 @@ from django.contrib import messages
 from plotly.offline import plot
 from plotly.graph_objs import Scatter
 from .models import Stocks
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -58,11 +60,15 @@ def register(request):
 #     y_data = [x**3 for x in x_data]
 #     plot_div = plot([Scatter(x=x_data, y=y_data, mode='lines', name='test', opacity=0.8, marker_color='green')], output_type='div', include_plotlyjs=False, show_link=False, link_text="")
 #     return render(request, 'grph.html', context={'plot_div': plot_div})
-def stocks(request):
 
-    # stocks = Stocks.objects.all()
+
+@login_required(login_url='/login')
+def stocks(request):
     return render(request, 'stocks.html')
 
+
+
+@login_required(login_url='/login')
 def newStockEntry(request):
     if request.method == 'GET':
         return render(request, 'newStockEntry.html')
