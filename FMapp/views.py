@@ -59,6 +59,8 @@ def register(request):
 #     plot_div = plot([Scatter(x=x_data, y=y_data, mode='lines', name='test', opacity=0.8, marker_color='green')], output_type='div', include_plotlyjs=False, show_link=False, link_text="")
 #     return render(request, 'grph.html', context={'plot_div': plot_div})
 def stocks(request):
+
+    # stocks = Stocks.objects.all()
     return render(request, 'stocks.html')
 
 def newStockEntry(request):
@@ -71,7 +73,7 @@ def newStockEntry(request):
         purchase_cost = request.POST['purchase_cost']
         quantity = request.POST['quantity']
 
-        request.user.stocks_set.create(Company_Name=comp_name, Company_Symbol = comp_sym, Purchase_Date = purchase_date, Purchase_Cost = purchase_cost, Quantity = quantity)
+        request.user.stocks.create(Company_Name=comp_name, Company_Symbol = comp_sym, Purchase_Date = purchase_date, Purchase_Cost = purchase_cost, Quantity = quantity)
         return render(request, 'stocks.html')
 
 

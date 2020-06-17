@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Stocks(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stocks", null=False)
 
     Company_Name = models.TextField(max_length=100)
     Company_Symbol = models.TextField(max_length=50)
