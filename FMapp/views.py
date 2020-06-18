@@ -129,3 +129,19 @@ def newloan(request):
 
         request.user.loans.create(Bank_Name=bank_name, Account_Number = account_num, Balance = balance, Status = True)
         return render(request, 'loans.html')
+
+@login_required(login_url='/login')
+def expenditures(request):
+    return render(request, 'expenditure.html')
+
+@login_required(login_url='/login')
+def newexpenditure(request):
+    if request.method == 'GET':
+        return render(request, 'newExpenditureEntry.html')
+    else:
+        amount = request.POST['amount']
+        date = request.POST['date']
+        remarks = request.POST['remarks']
+
+        request.user.expenditures.create(Amount=amount, Date=date, Remarks=remarks)
+        return render(request, 'expenditure.html')

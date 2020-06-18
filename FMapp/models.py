@@ -34,3 +34,11 @@ class Loans(models.Model):
     def __str__(self):
         return self.Account_Number
 
+class Expenditures(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="expenditures", null=False)
+
+    Amount = models.DecimalField(max_digits=10, decimal_places=3)
+    Date = models.DateField()
+    Remarks = models.TextField(max_length=200)
+    def __str__(self):
+        return self.Amount
