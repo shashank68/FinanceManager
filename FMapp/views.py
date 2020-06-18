@@ -58,12 +58,6 @@ def register(request):
             return redirect('/register')
         return redirect('/')
 
-# def grph(request):
-#     x_data = [0,1,2,3]
-#     y_data = [x**3 for x in x_data]
-#     plot_div = plot([Scatter(x=x_data, y=y_data, mode='lines', name='test', opacity=0.8, marker_color='green')], output_type='div', include_plotlyjs=False, show_link=False, link_text="")
-#     return render(request, 'grph.html', context={'plot_div': plot_div})
-
 
 @login_required(login_url='/login')
 def showstock(request, company_symbol):
@@ -76,7 +70,6 @@ def showstock(request, company_symbol):
     figures.update_yaxes(automargin=True)
     figures.update_xaxes(automargin=True)
     output_div = plot(figures, output_type='div', show_link= False, link_text="", include_plotlyjs=False)
-    print(output_div)
     return render(request, "showstock.html", {'plot_div': output_div, 'comp_sym': company_symbol})
 
 
